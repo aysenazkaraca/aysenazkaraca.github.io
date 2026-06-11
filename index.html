@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ayşenaz Karaca — Social Media Specialist, Content Creator & Linguistics Student based in Ankara, Türkiye." />
+  <title>Ayşenaz Karaca — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ─────────────────────────────────────────────────────────
+       RESET & TOKENS
+    ───────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:       #25344F;
+      --navy-light: #617891;
+      --sand:       #D5B893;
+      --brown:      #6F4D38;
+      --burgundy:   #632024;
+      --white:      #FFFFFF;
+      --off-white:  #F7F1E8;
+      --light:      #EDE3D4;
+      --text:       #2A2520;
+      --muted:      #7A6B5E;
+      --border:     #DDD0BC;
+      --serif:      'Playfair Display', Georgia, serif;
+      --sans:       'Inter', system-ui, -apple-system, sans-serif;
+      --nav-h:      64px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img, svg { display: block; }
+    ul { list-style: none; }
+
+    /* ─────────────────────────────────────────────────────────
+       TYPOGRAPHY HELPERS
+    ───────────────────────────────────────────────────────── */
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--brown);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-heading {
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 3vw, 2.75rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 0.9rem;
+    }
+
+    .rule {
+      width: 44px;
+      height: 3px;
+      background: var(--sand);
+      border-radius: 2px;
+      margin-bottom: 3rem;
+    }
+
+    /* ─────────────────────────────────────────────────────────
+       LAYOUT
+    ───────────────────────────────────────────────────────── */
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section { padding: 6rem 0; }
+
+    /* ─────────────────────────────────────────────────────────
+       NAV
+    ───────────────────────────────────────────────────────── */
+    #nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 900;
+      height: var(--nav-h);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 2rem;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .nav-logo em { font-style: normal; color: var(--burgundy); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.25rem;
+    }
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--navy); }
+
+    .nav-cta {
+      background: var(--navy) !important;
+      color: var(--white) !important;
+      padding: 0.5rem 1.35rem;
+      border-radius: 4px;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--burgundy) !important; }
+
+    /* hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--navy);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* mobile drawer */
+    #mobile-drawer {
+      position: fixed;
+      inset: var(--nav-h) 0 auto 0;
+      z-index: 899;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem 2rem 2rem;
+      gap: 0.25rem;
+      transform: translateY(-110%);
+      transition: transform 0.3s ease;
+    }
+    #mobile-drawer.open { transform: translateY(0); }
+    #mobile-drawer a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--navy);
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    #mobile-drawer a:last-child { border: none; color: var(--burgundy); font-weight: 600; }
+
+    /* ─────────────────────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      padding-top: var(--nav-h);
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    /* decorative geometric accent */
+    .hero-geo {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 52%;
+      height: 100%;
+      background: linear-gradient(155deg, #617891 0%, #1A2A3C 100%);
+      clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%);
+      pointer-events: none;
+    }
+
+    /* subtle dot pattern */
+    .hero-dots {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+    }
+
+    /* bottom accent line */
+    .hero-line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--burgundy) 0%, #8B2A2E 50%, var(--burgundy) 100%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      padding: 5rem 2rem 6rem;
+      max-width: 1160px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .hero-content {}
+
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 5.5vw, 5rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.75rem;
+    }
+    .hero-tag {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      letter-spacing: 0.3px;
+    }
+
+    .hero-bio {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.65);
+      max-width: 460px;
+      margin-bottom: 2.25rem;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.9rem;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: var(--burgundy);
+      color: var(--white);
+    }
+    .btn-primary:hover { background: var(--brown); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(99,32,36,0.35); }
+
+    .btn-ghost {
+      background: transparent;
+      color: rgba(255,255,255,0.85);
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .btn-ghost:hover { border-color: white; color: white; background: rgba(255,255,255,0.06); }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: var(--sand);
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+    .stat-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* hero image panel */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-photo-wrap {
+      width: 320px;
+      height: 400px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px dashed rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.04);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.78rem;
+      text-align: center;
+      padding: 1.5rem;
+    }
+    .hero-photo-wrap svg {
+      width: 52px;
+      height: 52px;
+      opacity: 0.25;
+    }
+    .hero-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ─────────────────────────────────────────────────────────
+       ABOUT
+    ───────────────────────────────────────────────────────── */
+    #about { background: var(--off-white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      background: var(--light);
+      border: 2px dashed var(--border);
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+    .about-img svg { width: 44px; height: 44px; opacity: 0.35; }
+
+    .about-body p {
+      font-size: 1.025rem;
+      line-height: 1.9;
+      color: #4a4a4a;
+      margin-bottom: 1.4rem;
+    }
+
+    .contact-chips {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2.25rem;
+    }
+    .chip {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+    .chip-icon {
+      width: 38px;
+      height: 38px;
+      min-width: 38px;
+      background: var(--navy);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .chip-icon svg { width: 15px; height: 15px; stroke: white; fill: none; }
+    .chip-label small {
+      display: block;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--muted);
+      margin-bottom: 0.1rem;
+    }
+    .chip-label span {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--navy);
+      word-break: break-all;
+    }
+
+    /* ─────────────────────────────────────────────────────────
+       EXPERIENCE
+    ───────────────────────────────────────────────────────── */
+    #experience { background: var(--white); }
+
+    .timeline {
+      position: relative;
+      padding-left: 2.75rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      bottom: 10px;
+      width: 2px;
+      background: var(--border);
+      border-radius: 2px;
+    }
+
+    .tl-item {
+      position: relative;
+      padding-bottom: 3.25rem;
+    }
+    .tl-item:last-child { padding-bottom: 0; }
+
+    .tl-dot {
+      position: absolute;
+      left: -2.75rem;
+      top: 7px;
+      width: 14px;
+      height: 14px;
+      background: var(--navy-light);
+      border-radius: 50%;
+      border: 3px solid var(--white);
+      box-shadow: 0 0 0 2px var(--navy-light);
+      transform: translateX(-6px);
+    }
+
+    .tl-date {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--brown);
+      margin-bottom: 0.3rem;
+    }
+
+    .tl-role {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.15rem;
+      line-height: 1.25;
+    }
+
+    .tl-org {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--brown);
+      margin-bottom: 0.9rem;
+    }
+
+    .tl-bullets li {
+      position: relative;
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: #555;
+      padding-left: 1.2rem;
+      margin-bottom: 0.3rem;
+    }
+    .tl-bullets li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 6px;
+      height: 6px;
+      background: var(--navy);
+      border-radius: 50%;
+      opacity: 0.5;
+    }
+
+    /* ─────────────────────────────────────────────────────────
+       EDUCATION
+    ───────────────────────────────────────────────────────── */
+    #education { background: var(--off-white); }
+
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .edu-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 2rem 1.75rem;
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--navy);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .edu-card:first-child { border-top-color: var(--burgundy); }
+    .edu-card:hover { transform: translateY(-5px); box-shadow: 0 14px 42px rgba(0,0,0,0.07); }
+
+    .edu-year {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.7rem;
+    }
+    .edu-school {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.45rem;
+      line-height: 1.35;
+    }
+    .edu-degree {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--brown);
+      margin-bottom: 0.75rem;
+    }
+    .edu-desc {
+      font-size: 0.84rem;
+      color: #666;
+      line-height: 1.65;
+    }
+
+    /* ─────────────────────────────────────────────────────────
+       SKILLS
+    ───────────────────────────────────────────────────────── */
+    #skills { background: var(--white); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3.25rem;
+    }
+
+    .skill-group-title {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--navy);
+      display: inline-block;
+      border-bottom: 2px solid var(--sand);
+      padding-bottom: 0.4rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+    .tag {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--navy);
+      background: var(--light);
+      border: 1px solid var(--border);
+      padding: 0.38rem 1rem;
+      border-radius: 50px;
+      transition: all 0.2s;
+      cursor: default;
+    }
+    .tag:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .tag.filled { background: var(--navy-light); color: var(--white); border-color: var(--navy-light); }
+    .tag.sand { background: var(--brown); color: var(--white); border-color: var(--brown); }
+
+    /* ─────────────────────────────────────────────────────────
+       LANGUAGES
+    ───────────────────────────────────────────────────────── */
+    #languages { background: var(--navy); }
+    #languages .eyebrow { color: var(--sand); }
+    #languages .section-heading { color: var(--white); }
+
+    .lang-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.75rem;
+    }
+
+    .lang-card {
+      padding: 2.25rem 1.5rem;
+      text-align: center;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .lang-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.07); }
+
+    .lang-name {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.35rem;
+    }
+    .lang-level {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--sand);
+      margin-bottom: 1.1rem;
+    }
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+    }
+    .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.18);
+    }
+    .dot.on { background: var(--sand); }
+
+    /* ─────────────────────────────────────────────────────────
+       CERTIFICATIONS
+    ───────────────────────────────────────────────────────── */
+    #certifications { background: var(--off-white); }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .cert-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      display: flex;
+      gap: 1.1rem;
+      align-items: flex-start;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .cert-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,0.06); }
+
+    .cert-ico {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      background: var(--light);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cert-ico svg { width: 20px; height: 20px; stroke: var(--navy); fill: none; stroke-width: 1.75; }
+
+    .cert-name {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.3rem;
+      line-height: 1.3;
+    }
+    .cert-info {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* ─────────────────────────────────────────────────────────
+       CONTACT
+    ───────────────────────────────────────────────────────── */
+    #contact { background: var(--white); }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 5.5rem;
+      align-items: start;
+    }
+
+    .contact-aside p {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 2.25rem;
+    }
+
+    .cinfo-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+    }
+    .cinfo-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .cinfo-ico {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      background: var(--navy);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cinfo-ico svg { width: 17px; height: 17px; stroke: white; fill: none; stroke-width: 1.75; }
+    .cinfo-txt small {
+      display: block;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--muted);
+      margin-bottom: 0.1rem;
+    }
+    .cinfo-txt strong {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--navy);
+    }
+
+    /* form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.35rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.35rem; }
+    .fg { display: flex; flex-direction: column; gap: 0.4rem; }
+    .fg label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--navy);
+    }
+    .fg input,
+    .fg textarea,
+    .fg select {
+      padding: 0.75rem 1.05rem;
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      color: var(--text);
+      background: var(--off-white);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    .fg input:focus,
+    .fg textarea:focus {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(37,52,79,0.08);
+      background: var(--white);
+    }
+    .fg textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+    .form-status {
+      display: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #2d6a4f;
+      background: #d8f3dc;
+      border-radius: 6px;
+      padding: 0.75rem 1.1rem;
+    }
+
+    /* ─────────────────────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────────────────────── */
+    footer {
+      background: var(--navy);
+      padding: 3rem 2rem 2.5rem;
+      text-align: center;
+    }
+    .footer-name {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.35rem;
+    }
+    .footer-sub {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 1.5rem;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 0.85rem;
+      margin-bottom: 1.75rem;
+    }
+    .footer-link {
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.5);
+      stroke: rgba(255,255,255,0.5);
+      transition: all 0.2s;
+    }
+    .footer-link:hover {
+      border-color: var(--sand);
+      color: var(--sand);
+      stroke: var(--sand);
+      background: rgba(213,184,147,0.12);
+    }
+    .footer-link svg { width: 16px; height: 16px; stroke: inherit; fill: none; stroke-width: 1.75; }
+    .footer-copy {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.25);
+    }
+
+    /* ─────────────────────────────────────────────────────────
+       SCROLL ANIMATIONS
+    ───────────────────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ─────────────────────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .about-grid { grid-template-columns: 280px 1fr; gap: 3rem; }
+      .edu-grid   { grid-template-columns: repeat(2, 1fr); }
+      .lang-grid  { grid-template-columns: repeat(2, 1fr); }
+      .cert-grid  { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 860px) {
+      .about-grid         { grid-template-columns: 1fr; }
+      .about-img          { max-width: 260px; margin: 0 auto; }
+      .contact-chips      { grid-template-columns: 1fr; }
+      .skills-grid        { grid-template-columns: 1fr; }
+      .contact-layout     { grid-template-columns: 1fr; gap: 3.5rem; }
+      .form-row           { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links  { display: none; }
+      .hamburger  { display: flex; }
+
+      .hero-inner         { grid-template-columns: 1fr; text-align: center; padding: 4rem 1.5rem 5rem; }
+      .hero-visual        { display: none; }
+      .hero-tags          { justify-content: center; }
+      .hero-btns          { justify-content: center; }
+      .hero-stats         { justify-content: center; }
+      .hero-bio           { margin: 0 auto 2.25rem; }
+      .hero-geo           { display: none; }
+
+      section { padding: 4.5rem 0; }
+      .container { padding: 0 1.25rem; }
+
+      .edu-grid   { grid-template-columns: 1fr; }
+      .cert-grid  { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .lang-grid { grid-template-columns: 1fr 1fr; }
+      .hero-name { font-size: 2.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─────────────────────────────────────── NAV ─── -->
+<nav id="nav">
+  <div class="nav-logo">Ayşenaz<em>.</em></div>
+
+  <ul class="nav-links" role="navigation" aria-label="Main navigation">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#certifications">Achievements</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div id="mobile-drawer" role="navigation" aria-label="Mobile navigation">
+  <a href="#about"          onclick="closeDrawer()">About</a>
+  <a href="#experience"     onclick="closeDrawer()">Experience</a>
+  <a href="#education"      onclick="closeDrawer()">Education</a>
+  <a href="#skills"         onclick="closeDrawer()">Skills</a>
+  <a href="#certifications" onclick="closeDrawer()">Achievements</a>
+  <a href="#contact"        onclick="closeDrawer()">Contact</a>
+</div>
+
+<!-- ─────────────────────────────────────── HERO ─── -->
+<section id="hero" aria-label="Introduction">
+  <div class="hero-geo" aria-hidden="true"></div>
+  <div class="hero-dots"  aria-hidden="true"></div>
+  <div class="hero-line"  aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <div class="hero-content">
+      <span class="eyebrow">Portfolio 2026</span>
+      <h1 class="hero-name">Ayşenaz<br>Karaca</h1>
+
+      <div class="hero-tags" role="list">
+        <span class="hero-tag" role="listitem">Social Media Specialist</span>
+        <span class="hero-tag" role="listitem">Content Creator</span>
+        <span class="hero-tag" role="listitem">Linguistics Student</span>
+      </div>
+
+      <p class="hero-bio">
+        Final-year Linguistics student working at the intersection of language, culture, and digital communication — producing engagement-driven content and hosting live events for brands, organisations, and university communities.
+      </p>
+
+      <div class="hero-btns">
+        <a href="#experience" class="btn btn-primary">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+          View My Work
+        </a>
+        <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+      </div>
+
+      <div class="hero-stats" aria-label="Quick stats">
+        <div>
+          <div class="stat-num">7+</div>
+          <div class="stat-label">Roles</div>
+        </div>
+        <div>
+          <div class="stat-num">4</div>
+          <div class="stat-label">Languages</div>
+        </div>
+        <div>
+          <div class="stat-num">6+</div>
+          <div class="stat-label">Achievements</div>
+        </div>
+        <div>
+          <div class="stat-num">3.39</div>
+          <div class="stat-label">University GPA</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-photo-wrap">
+        <!-- Replace the div below with <img src="your-photo.jpg" alt="Ayşenaz Karaca"> -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+        <span>Profile Photo<br><em style="font-style:normal;font-size:0.65rem;opacity:0.6">Replace with your image</em></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────── ABOUT ─── -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid reveal">
+
+      <div class="about-img" aria-label="Profile image placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <circle cx="8.5" cy="8.5" r="1.5"/>
+          <path d="m21 15-5-5L5 21"/>
+        </svg>
+        <span>Profile Image</span>
+      </div>
+
+      <div class="about-body">
+        <span class="eyebrow">About Me</span>
+        <h2 class="section-heading">Language, Culture &amp;<br>Digital Communication</h2>
+        <div class="rule"></div>
+
+        <p>
+          Final-year Linguistics student at Ankara University's Faculty of Language, History &amp; Geography (DTCF), working at the intersection of language, culture, and digital communication.
+        </p>
+        <p>
+          I pair an analytical, academic mindset with a creative one — producing engagement-driven content, managing social media accounts, shooting and editing video, and hosting live events for brands, organisations, and university communities.
+        </p>
+        <p>
+          Curious, articulate, and interdisciplinary by nature, I thrive in environments that value innovation, collaboration, and continuous learning.
+        </p>
+
+        <div class="contact-chips">
+          <div class="chip">
+            <div class="chip-icon">
+              <svg viewBox="0 0 24 24" stroke-width="1.75"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="chip-label">
+              <small>Email</small>
+              <span>aysenazkaraca@outlook.com</span>
+            </div>
+          </div>
+          <div class="chip">
+            <div class="chip-icon">
+              <svg viewBox="0 0 24 24" stroke-width="1.75"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6 6l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+            </div>
+            <div class="chip-label">
+              <small>Phone</small>
+              <span>+90 532 361 35 78</span>
+            </div>
+          </div>
+          <div class="chip">
+            <div class="chip-icon">
+              <svg viewBox="0 0 24 24" stroke-width="1.75"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="chip-label">
+              <small>Location</small>
+              <span>Çankaya, Ankara, Türkiye</span>
+            </div>
+          </div>
+          <div class="chip">
+            <div class="chip-icon">
+              <svg viewBox="0 0 24 24" stroke-width="1.75"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </div>
+            <div class="chip-label">
+              <small>Instagram</small>
+              <span>@_aysenazkaraca</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────── EXPERIENCE ─── -->
+<section id="experience">
+  <div class="container">
+    <span class="eyebrow">Career</span>
+    <h2 class="section-heading">Professional Experience</h2>
+    <div class="rule"></div>
+
+    <div class="timeline">
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2025 – 2026</div>
+        <div class="tl-role">Social Media Specialist</div>
+        <div class="tl-org">Turuncu360 &mdash; Freelance</div>
+        <ul class="tl-bullets">
+          <li>Edit video content with Canva and CapCut, manage the publishing pipeline, and develop new content ideas for clients.</li>
+          <li>Own end-to-end production: shooting, editing, and sound design for branded posts and subtitled Reels.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item reveal reveal-delay-1">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2025 – 2026</div>
+        <div class="tl-role">Board Member &amp; Social Media Coordinator</div>
+        <div class="tl-org">Ankara University · DTCF Student Representation</div>
+        <ul class="tl-bullets">
+          <li>Serve as a board member and vice president, organising the faculty's established events and overseeing student-related activities.</li>
+          <li>Lead visual design, content planning, and account management across the representation's social channels.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item reveal reveal-delay-2">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Aug – Sep 2025</div>
+        <div class="tl-role">Summer Intern</div>
+        <div class="tl-org">Turkish Language Association (TDK) — National Internship Program</div>
+        <ul class="tl-bullets">
+          <li>Contributed to language-focused research and content development, gaining hands-on experience in linguistic documentation, textual analysis, and language preservation.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2024</div>
+        <div class="tl-role">Social Media Manager</div>
+        <div class="tl-org">İnce Ayrıntı Magazine</div>
+        <ul class="tl-bullets">
+          <li>Managed the magazine's social accounts, developed content ideas, and edited written materials to strengthen online presence and audience engagement.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item reveal reveal-delay-1">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2024</div>
+        <div class="tl-role">Host &amp; Live Broadcaster</div>
+        <div class="tl-org">BaşkentCup Sports Games — with Ankara Metropolitan Municipality</div>
+        <ul class="tl-bullets">
+          <li>Hosted and commentated live sports broadcasts, building real-time engagement with both online and in-person audiences through diction and stage presence.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item reveal reveal-delay-2">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2022 – 2023</div>
+        <div class="tl-role">Social Media Coordinator</div>
+        <div class="tl-org">Ankara University Entrepreneurship &amp; Innovation Society (AGİT)</div>
+        <ul class="tl-bullets">
+          <li>Managed social media for TEDxAnkaraUniversity and a brand festival before, during, and after each event, driving content planning, visual design coordination, and live audience interaction.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Freelance</div>
+        <div class="tl-role">Brand Content Producer</div>
+        <div class="tl-org">RN Kuaför</div>
+        <ul class="tl-bullets">
+          <li>Produced and edited all branded videos and subtitled Reels for the account, handling production, editing, and sound design from start to finish.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────── EDUCATION ─── -->
+<section id="education">
+  <div class="container">
+    <span class="eyebrow">Academic Background</span>
+    <h2 class="section-heading">Education</h2>
+    <div class="rule"></div>
+
+    <div class="edu-grid">
+
+      <div class="edu-card reveal">
+        <div class="edu-year">2022 – 2026</div>
+        <div class="edu-school">Ankara University — Faculty of Language, History &amp; Geography (DTCF)</div>
+        <div class="edu-degree">B.A. in Linguistics &middot; GPA 3.39</div>
+        <p class="edu-desc">Senior thesis: A study on the use of English-origin verb borrowings in the context of corporate discourse.</p>
+      </div>
+
+      <div class="edu-card reveal reveal-delay-1">
+        <div class="edu-year">2018 – 2022</div>
+        <div class="edu-school">Özel Isparta Düşünür College, Anadolu High School</div>
+        <div class="edu-degree">High School Diploma &middot; GPA 95.91</div>
+        <p class="edu-desc">Led a TÜBİTAK-supported research project; active in theatre, singing, creative writing, and public speaking.</p>
+      </div>
+
+      <div class="edu-card reveal reveal-delay-2">
+        <div class="edu-year">2014 – 2022</div>
+        <div class="edu-school">Isparta Şehit Polis Mehmet Karacatilki Science &amp; Art Center (BİLSEM)</div>
+        <div class="edu-degree">Violin Department (Gifted Students Program)</div>
+        <p class="edu-desc">Completed formal violin training; participated in two Erasmus+ projects — Netherlands (2020) and Poland (2017).</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────── SKILLS ─── -->
+<section id="skills">
+  <div class="container">
+    <span class="eyebrow">What I Bring</span>
+    <h2 class="section-heading">Skills &amp; Tools</h2>
+    <div class="rule"></div>
+
+    <div class="skills-grid reveal">
+
+      <div>
+        <div class="skill-group-title">Technical Skills</div>
+        <div class="tag-list">
+          <span class="tag">Social Media Management</span>
+          <span class="tag">Content Creation</span>
+          <span class="tag">Video Shooting &amp; Editing</span>
+          <span class="tag">Sound Design</span>
+          <span class="tag">Visual Design</span>
+          <span class="tag">Text Editing</span>
+          <span class="tag">Linguistic Research</span>
+          <span class="tag">Event Coordination</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="skill-group-title">Tools &amp; Platforms</div>
+        <div class="tag-list">
+          <span class="tag filled">Canva</span>
+          <span class="tag filled">CapCut</span>
+          <span class="tag filled">Instagram</span>
+          <span class="tag filled">Content Calendar</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="skill-group-title">Soft Skills</div>
+        <div class="tag-list">
+          <span class="tag">Public Speaking</span>
+          <span class="tag">Hosting</span>
+          <span class="tag">Diction</span>
+          <span class="tag">Leadership</span>
+          <span class="tag">Strategic Planning</span>
+          <span class="tag">Team Collaboration</span>
+          <span class="tag">Storytelling</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="skill-group-title">Voice &amp; Diction</div>
+        <div class="tag-list">
+          <span class="tag sand">Voice-over</span>
+          <span class="tag sand">Dubbing</span>
+          <span class="tag sand">Turkish</span>
+          <span class="tag sand">English</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────── LANGUAGES ─── -->
+<section id="languages">
+  <div class="container">
+    <span class="eyebrow">Communication</span>
+    <h2 class="section-heading">Languages</h2>
+    <div class="rule"></div>
+
+    <div class="lang-grid reveal">
+
+      <div class="lang-card">
+        <div class="lang-name">Turkish</div>
+        <div class="lang-level">Native</div>
+        <div class="dots" aria-label="Proficiency: 5 of 5">
+          <span class="dot on"></span>
+          <span class="dot on"></span>
+          <span class="dot on"></span>
+          <span class="dot on"></span>
+          <span class="dot on"></span>
+        </div>
+      </div>
+
+      <div class="lang-card">
+        <div class="lang-name">English</div>
+        <div class="lang-level">Advanced</div>
+        <div class="dots" aria-label="Proficiency: 4 of 5">
+          <span class="dot on"></span>
+          <span class="dot on"></span>
+          <span class="dot on"></span>
+          <span class="dot on"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+
+      <div class="lang-card">
+        <div class="lang-name">German</div>
+        <div class="lang-level">Beginner</div>
+        <div class="dots" aria-label="Proficiency: 2 of 5">
+          <span class="dot on"></span>
+          <span class="dot on"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+
+      <div class="lang-card">
+        <div class="lang-name">Korean</div>
+        <div class="lang-level">Beginner</div>
+        <div class="dots" aria-label="Proficiency: 1 of 5">
+          <span class="dot on"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────────────── CERTIFICATIONS ─── -->
+<section id="certifications">
+  <div class="container">
+    <span class="eyebrow">Achievements</span>
+    <h2 class="section-heading">Certifications &amp; Milestones</h2>
+    <div class="rule"></div>
+
+    <div class="cert-grid">
+
+      <div class="cert-card reveal">
+        <div class="cert-ico">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+        </div>
+        <div>
+          <div class="cert-name">Global Young Executive Academy</div>
+          <div class="cert-info">HR, Entrepreneurship, E-Commerce &amp; Influencer Marketing · 2024</div>
+        </div>
+      </div>
+
+      <div class="cert-card reveal reveal-delay-1">
+        <div class="cert-ico">
+          <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        </div>
+        <div>
+          <div class="cert-name">Başkent Communication Sciences Academy</div>
+          <div class="cert-info">Voice-over, Dubbing &amp; Diction Training — 4 months · 2024</div>
+        </div>
+      </div>
+
+      <div class="cert-card reveal reveal-delay-2">
+        <div class="cert-ico">
+          <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <div>
+          <div class="cert-name">Anbean Marketing &amp; Brand School</div>
+          <div class="cert-info">Marketing &amp; Human Resources School · 2025</div>
+        </div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-ico">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div>
+          <div class="cert-name">39th National Linguistics Conference</div>
+          <div class="cert-info">Participant — Çukurova University, Adana · 2026</div>
+        </div>
+      </div>
+
+      <div class="cert-card reveal reveal-delay-1">
+        <div class="cert-ico">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div>
+          <div class="cert-name">22nd ICTL — International Conference on Turkish Linguistics</div>
+          <div class="cert-info">Participant — İzmir · 2025</div>
+        </div>
+      </div>
+
+      <div class="cert-card reveal reveal-delay-2">
+        <div class="cert-ico">
+          <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        </div>
+        <div>
+          <div class="cert-name">Erasmus+ Projects</div>
+          <div class="cert-info">United Schools in Music — Netherlands (2020) · Bridging the Differences Through Music — Poland (2017)</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────── CONTACT ─── -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-layout">
+
+      <div class="contact-aside reveal">
+        <span class="eyebrow">Let's Connect</span>
+        <h2 class="section-heading">Get in Touch</h2>
+        <div class="rule"></div>
+        <p>Have a project, collaboration, or opportunity in mind? I'd love to hear from you — feel free to reach out through any of the channels below.</p>
+
+        <ul class="cinfo-list">
+          <li class="cinfo-row">
+            <div class="cinfo-ico">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="cinfo-txt">
+              <small>Email</small>
+              <strong>aysenazkaraca@outlook.com</strong>
+            </div>
+          </li>
+          <li class="cinfo-row">
+            <div class="cinfo-ico">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6 6l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+            </div>
+            <div class="cinfo-txt">
+              <small>Phone</small>
+              <strong>+90 532 361 35 78</strong>
+            </div>
+          </li>
+          <li class="cinfo-row">
+            <div class="cinfo-ico">
+              <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </div>
+            <div class="cinfo-txt">
+              <small>Instagram</small>
+              <strong>@_aysenazkaraca</strong>
+            </div>
+          </li>
+          <li class="cinfo-row">
+            <div class="cinfo-ico">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="cinfo-txt">
+              <small>Location</small>
+              <strong>Çankaya, Ankara, Türkiye</strong>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="reveal reveal-delay-1">
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="fg">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="fname" placeholder="Your first name" required />
+            </div>
+            <div class="fg">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="lname" placeholder="Your last name" />
+            </div>
+          </div>
+          <div class="fg">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+          </div>
+          <div class="fg">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="What's this about?" />
+          </div>
+          <div class="fg">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell me about your project or idea…" required></textarea>
+          </div>
+          <div class="form-status" id="formStatus" role="status">
+            ✓ &nbsp;Your message has been sent! I'll get back to you soon.
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: fit-content; font-family: var(--sans);">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Send Message
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────── FOOTER ─── -->
+<footer>
+  <div class="footer-name">Ayşenaz Karaca</div>
+  <div class="footer-sub">Social Media Specialist &middot; Content Creator &middot; Linguistics Student</div>
+
+  <div class="footer-links">
+    <a href="mailto:aysenazkaraca@outlook.com" class="footer-link" aria-label="Email">
+      <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    </a>
+    <a href="https://instagram.com/_aysenazkaraca" class="footer-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    </a>
+    <a href="tel:+905323613578" class="footer-link" aria-label="Phone">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6 6l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+    </a>
+  </div>
+
+  <div class="footer-copy">&copy; 2026 Ayşenaz Karaca. All rights reserved.</div>
+</footer>
+
+<!-- ─────────────────────────────── JAVASCRIPT ─── -->
+<script>
+  /* ── Mobile Nav ─────────────────────────────────── */
+  const hamburger   = document.getElementById('hamburger');
+  const mobileDrawer = document.getElementById('mobile-drawer');
+
+  hamburger.addEventListener('click', () => {
+    const open = mobileDrawer.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+
+  function closeDrawer() {
+    mobileDrawer.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  /* close drawer on outside click */
+  document.addEventListener('click', (e) => {
+    if (!hamburger.contains(e.target) && !mobileDrawer.contains(e.target)) {
+      closeDrawer();
+    }
+  });
+
+  /* ── Active Nav Link on Scroll ──────────────────── */
+  const sections  = document.querySelectorAll('section[id]');
+  const navAnchors = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 90) current = sec.id;
+    });
+    navAnchors.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  }, { passive: true });
+
+  /* ── Scroll Reveal ──────────────────────────────── */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  /* ── Contact Form ───────────────────────────────── */
+  document.getElementById('contactForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const btn    = this.querySelector('button[type="submit"]');
+    const status = document.getElementById('formStatus');
+
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    /* Simulate async send — wire to your backend / EmailJS / Formspree here */
+    setTimeout(() => {
+      status.style.display = 'block';
+      btn.innerHTML = '&#10003; Sent!';
+      btn.style.background = '#617891';
+
+      setTimeout(() => {
+        status.style.display = 'none';
+        btn.innerHTML = '<svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Message';
+        btn.style.background = '';
+        btn.disabled = false;
+        this.reset();
+      }, 3500);
+    }, 1000);
+  });
+</script>
+</body>
+</html>
