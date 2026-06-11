@@ -916,36 +916,63 @@
     }
 
     @media (max-width: 860px) {
-      .about-grid         { grid-template-columns: 1fr; }
-      .about-img          { max-width: 260px; margin: 0 auto; }
-      .contact-chips      { grid-template-columns: 1fr; }
-      .skills-grid        { grid-template-columns: 1fr; }
-      .contact-layout     { grid-template-columns: 1fr; gap: 3.5rem; }
-      .form-row           { grid-template-columns: 1fr; }
+      .about-grid      { grid-template-columns: 1fr; }
+      .about-img       { max-width: 260px; margin: 0 auto; }
+      .contact-chips   { grid-template-columns: 1fr; }
+      .skills-grid     { grid-template-columns: 1fr; }
+      .contact-layout  { grid-template-columns: 1fr; gap: 3.5rem; }
+      .form-row        { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 768px) {
+      /* Nav */
       .nav-links  { display: none; }
       .hamburger  { display: flex; }
 
-      .hero-inner         { grid-template-columns: 1fr; text-align: center; padding: 4rem 1.5rem 5rem; }
-      .hero-visual        { display: none; }
-      .hero-tags          { justify-content: center; }
-      .hero-btns          { justify-content: center; }
-      .hero-stats         { justify-content: center; }
-      .hero-bio           { margin: 0 auto 2.25rem; }
-      .hero-geo           { display: none; }
+      /* Hero layout */
+      .hero-inner  {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 4rem 1.5rem 5rem;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+      }
+      .hero-visual { display: none; }
+      .hero-geo    { display: none; }
+      .hero-bio    { margin: 0 auto 2.25rem; max-width: 100%; }
 
-      section { padding: 4.5rem 0; }
-      .container { padding: 0 1.25rem; }
+      /* Hero inline flex elements — wrap & center */
+      .hero-tags  { justify-content: center; flex-wrap: wrap; }
+      .hero-btns  { justify-content: center; flex-wrap: wrap; gap: 0.75rem; }
+
+      /* Stats: 2×2 grid so all 4 fit without overflow */
+      .hero-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem 2rem;
+        justify-items: center;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-top: 2rem;
+        width: 100%;
+      }
+
+      /* Sections */
+      section     { padding: 4.5rem 0; }
+      .container  { padding: 0 1.25rem; }
 
       .edu-grid   { grid-template-columns: 1fr; }
       .cert-grid  { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 480px) {
-      .lang-grid { grid-template-columns: 1fr 1fr; }
-      .hero-name { font-size: 2.6rem; }
+      .lang-grid   { grid-template-columns: 1fr 1fr; }
+      .hero-name   { font-size: 2.4rem; }
+      .stat-num    { font-size: 1.9rem; }
+
+      /* Stack buttons vertically on very small screens */
+      .hero-btns   { flex-direction: column; align-items: center; }
+      .btn         { width: 100%; max-width: 280px; justify-content: center; }
     }
   </style>
 </head>
